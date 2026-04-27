@@ -13,14 +13,6 @@
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@2.1.8"]
     },
-    "brave-search": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-brave-search@0.6.2"],
-      "env": {
-        "BRAVE_API_KEY": "${env:BRAVE_API_KEY}"
-      },
-      "disabled": true
-    },
     "github": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github@2025.4.8"],
@@ -41,16 +33,6 @@
         "--directory",
         "./mcp-examples/excalidraw-scenes-py",
         "excalidraw-scenes-mcp"
-      ],
-      "disabled": true
-    },
-    "excalidraw-scene-assistant-py": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--directory",
-        "./mcp-examples/excalidraw-scene-assistant-py",
-        "excalidraw-scene-assistant-mcp"
       ],
       "disabled": true
     }
