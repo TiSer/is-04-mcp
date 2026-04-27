@@ -62,13 +62,6 @@ Add one section per server below. A good entry covers: data accessed, secrets us
 - **Trust:** local custom MCP code owned by the team.
 - **Mitigations:** rejects paths outside workspace root; no outbound network calls; read-only analysis tools.
 
-### `<your-custom-mcp>`
-
-- **Data accessed:** ...
-- **Secrets:** ...
-- **Trust:** ...
-- **Mitigations:** ...
-
 ## Incident response
 
 If a secret leaks (e.g., committed `.cursor/mcp.json`):

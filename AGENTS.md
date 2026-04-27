@@ -80,6 +80,5 @@ Add your MCPs here during the Day 4 workshop. Each entry should describe the ser
 - **context7** (public, `@upstash/context7-mcp`) — fresh library docs as MCP resources. No secrets.
 - **brave-search** (public, `@modelcontextprotocol/server-brave-search`) — web search MCP for fresh public web results. Uses `BRAVE_API_KEY` via `${env:BRAVE_API_KEY}`.
 - **excalidraw-scene-assistant-py** (custom, `mcp-examples/excalidraw-scene-assistant-py`) — scene-aware tools (`summarize_scene`, `extract_text_labels`, `validate_scene`) and one guidelines resource; reads `.excalidraw` files in workspace and returns structured analysis.
-- **<your-custom-mcp>** (custom, `mcp-examples/<name>/`) — purpose, tools exposed, data accessed, secrets used.
 
 See `docs/mcp/SECURITY.md` for the per-MCP threat model and `docs/mcp-testing/` for A/B test results.
