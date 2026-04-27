@@ -18,18 +18,33 @@ from typing import Any
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("excalidraw-scene-assistant-py")
-WORKSPACE_ROOT = Path.cwd().resolve()
+# server.py -> excalidraw-scene-assistant-py -> mcp-examples -> repo root
+WORKSPACE_ROOT = Path(__file__).resolve().parents[2]
 
 
 def _ensure_workspace_path(path: str) -> Path:
     resolved = Path(path).resolve()
-    resolved.relative_to(WORKSPACE_ROOT)
+    try:
+        resolved.relative_to(WORKSPACE_ROOT)
+    except ValueError as exc:
+        raise ValueError(f"Path must stay inside workspace: {path}") from exc
+    if resolved.suffix != ".excalidraw":
+        raise ValueError(f"Only .excalidraw files are allowed: {path}")
     return resolved
 
 
 def _read_scene(path: str) -> dict[str, Any]:
-    scene_path = _ensure_workspace_path(path)
-    return json.loads(scene_path.read_text(encoding="utf-8"))
+    try:
+        scene_path = _ensure_workspace_path(path)
+        return json.loads(scene_path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise ValueError(f"Scene file not found: {path}") from exc
+    except PermissionError as exc:
+        raise ValueError(f"Permission denied reading scene: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Invalid JSON in scene file: {path}") from exc
+    except OSError as exc:
+        raise ValueError(f"Failed to read scene file: {path}") from exc
 
 
 @mcp.tool()
@@ -75,7 +90,7 @@ def summarize_scene(path: str) -> dict[str, Any]:
 
 
 @mcp.tool()
-def extract_text_labels(path: str, unique: bool = False) -> list[str]:
+def extract_text_labels(path: str, *, unique: bool = False) -> list[str]:
     """Extract text labels from non-deleted text elements."""
     scene = _read_scene(path)
     labels = [
