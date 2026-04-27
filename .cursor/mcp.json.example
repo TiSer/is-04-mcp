@@ -42,6 +42,16 @@
         "excalidraw-scenes-mcp"
       ],
       "disabled": true
+    },
+    "excalidraw-scene-assistant-py": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "./mcp-examples/excalidraw-scene-assistant-py",
+        "excalidraw-scene-assistant-mcp"
+      ],
+      "disabled": true
     }
   }
 }

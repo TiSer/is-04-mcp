@@ -55,6 +55,13 @@ Add one section per server below. A good entry covers: data accessed, secrets us
 - **Trust:** local code, reviewed by the team.
 - **Mitigations:** path validation in the server; runs as a subprocess of the host; no network calls.
 
+### excalidraw-scene-assistant-py (custom)
+
+- **Data accessed:** reads `.excalidraw` files within workspace boundaries and returns summaries/validation reports.
+- **Secrets:** none.
+- **Trust:** local custom MCP code owned by the team.
+- **Mitigations:** rejects paths outside workspace root; no outbound network calls; read-only analysis tools.
+
 ### `<your-custom-mcp>`
 
 - **Data accessed:** ...
