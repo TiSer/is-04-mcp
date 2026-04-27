@@ -34,6 +34,13 @@ Add one section per server below. A good entry covers: data accessed, secrets us
 - **Trust:** vendor-maintained.
 - **Mitigations:** outbound only to `context7.com`; no repo data leaves the machine.
 
+### brave-search (`@modelcontextprotocol/server-brave-search`)
+
+- **Data accessed:** sends search queries to Brave Search and receives public web result snippets/URLs.
+- **Secrets:** `BRAVE_API_KEY` via `${env:BRAVE_API_KEY}`.
+- **Trust:** first-party MCP reference server + Brave Search API provider.
+- **Mitigations:** keep prompts free of sensitive data; use least-privilege API key; rotate key if exposed.
+
 ### github (`@modelcontextprotocol/server-github`) — disabled by default
 
 - **Data accessed:** repo metadata, issues, PRs, file contents on github.com.

@@ -78,6 +78,7 @@ Add your MCPs here during the Day 4 workshop. Each entry should describe the ser
 
 - **filesystem** (public, `@modelcontextprotocol/server-filesystem`) — read-only access scoped to `./excalidraw-app` and `./examples`. No secrets.
 - **context7** (public, `@upstash/context7-mcp`) — fresh library docs as MCP resources. No secrets.
+- **brave-search** (public, `@modelcontextprotocol/server-brave-search`) — web search MCP for fresh public web results. Uses `BRAVE_API_KEY` via `${env:BRAVE_API_KEY}`.
 - **<your-custom-mcp>** (custom, `mcp-examples/<name>/`) — purpose, tools exposed, data accessed, secrets used.
 
 See `docs/mcp/SECURITY.md` for the per-MCP threat model and `docs/mcp-testing/` for A/B test results.
